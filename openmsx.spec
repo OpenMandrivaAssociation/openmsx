@@ -68,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog GPL README TODO doc/*
+%doc AUTHORS ChangeLog GPL README doc/*
 %{_bindir}/openmsx
 %{_datadir}/openMSX/share/*
 %_menudir/%name
