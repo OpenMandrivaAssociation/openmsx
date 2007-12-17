@@ -10,7 +10,6 @@ Source0:   %{name}-%{version}.tar.bz2
 Patch0:    openmsx_fix_config.patch
 License:   GPL
 Group:     Emulators
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 URL:       http://openmsx.sourceforge.net/
 BuildRequires:   libSDL-devel, libSDL_image-devel, %{mklibname tcl 8.4}
 BuildRequires:   libmesaglu-devel, libpng-devel, libxml2-devel
