@@ -45,15 +45,15 @@ install -d %{buildroot}%{_datadir}/openMSX/share/machines
    cp -r Contrib/cbios/C-BIOS_MSX2+/ %{buildroot}%{_datadir}/openMSX/share/machines/
 
 # menu
-mkdir -p %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} <<EOF
-?package(%{name}): \
-   command="%{_bindir}/openmsx" \
-   icon="emulators_section.png" \
-   title="Openmsx" \
-   longtitle="%{summary}" \
-   needs="x11" \
-   section="More Applications/Emulators"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{_bindir}/openmsx
+Icon=emulators_section
+Name=Openmsx
+Comment=%{summary}
+Categories=Emulator;
 EOF
 
 %post
@@ -71,4 +71,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog GPL README doc/*
 %{_bindir}/openmsx
 %{_datadir}/openMSX/share/*
-%_menudir/%name
+%{_datadir}/applications/mandriva-%name.desktop
