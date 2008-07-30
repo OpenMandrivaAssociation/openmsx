@@ -1,6 +1,6 @@
 %define name      openmsx
 %define version   0.6.2
-%define release   %mkrel 2
+%define release   %mkrel 4
 
 Summary:   Open source MSX emulator
 Name:      %{name}
