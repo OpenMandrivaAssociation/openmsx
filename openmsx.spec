@@ -1,6 +1,6 @@
 %define name      openmsx
-%define version   0.6.2
-%define release   %mkrel 4
+%define version   0.6.3
+%define release   %mkrel 1
 
 Summary:   Open source MSX emulator
 Name:      %{name}
@@ -12,7 +12,7 @@ License:   GPL
 Group:     Emulators
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 URL:       http://openmsx.sourceforge.net/
-BuildRequires:   libSDL-devel, libSDL_image-devel, %{mklibname tcl 8.4}
+BuildRequires:   libSDL-devel, libSDL_image-devel, libtcl-devel
 BuildRequires:   libmesaglu-devel, libpng-devel, libxml2-devel
 BuildRequires:   tcl-devel
 
