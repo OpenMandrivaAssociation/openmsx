@@ -13,7 +13,7 @@ BuildRequires:	libSDL_image-devel
 BuildRequires:	libmesaglu-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	tcl-devel SDL_ttf-devel jack-devel glew-devel
+BuildRequires:	tcl-devel libSDL_ttf-devel jack-devel glew-devel
 
 %description
 The open source MSX emulator that tries to achieve
