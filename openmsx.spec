@@ -70,7 +70,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog GPL README doc/*
+%doc ChangeLog README doc/*
 %{_bindir}/openmsx
 %{_datadir}/openMSX/share/*
 %{_datadir}/applications/mandriva-%{name}.desktop
