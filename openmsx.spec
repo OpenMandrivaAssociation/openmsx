@@ -1,6 +1,6 @@
 Summary:	Open source MSX emulator
 Name:		openmsx
-Version:	0.7.0
+Version:	0.7.2
 Release:	%{mkrel 2}
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		openmsx_fix_config.patch
