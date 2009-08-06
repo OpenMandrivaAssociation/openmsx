@@ -3,7 +3,7 @@ Name:		openmsx
 Version:	0.7.2
 Release:	%{mkrel 3}
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		openmsx_fix_config.patch
+Patch0:		openmsx-fix-config.patch
 License:	GPL+
 Group:		Emulators
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
@@ -21,7 +21,7 @@ near-perfect emulation by using a novel emulation model.
 
 %prep
 %setup -q
-# %patch0 -p0
+%patch0 -p0
 
 %build
 %configure2_5x
