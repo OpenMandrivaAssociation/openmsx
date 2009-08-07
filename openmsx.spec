@@ -26,7 +26,7 @@ near-perfect emulation by using a novel emulation model.
 %build
 %configure2_5x
 
-%make INSTALL_SHARE_DIR=/usr/share/openMSX/
+%make
 
 %install
 rm -rf %{buildroot}
