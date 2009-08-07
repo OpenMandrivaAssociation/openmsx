@@ -59,7 +59,9 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc %_datadir/doc/%name/
+%if %mdvver > 200900
 %doc README
+%endif
 %{_bindir}/openmsx
 %{_datadir}/%name
 %{_datadir}/applications/mandriva-%{name}.desktop
