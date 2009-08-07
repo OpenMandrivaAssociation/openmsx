@@ -13,6 +13,7 @@ BuildRequires:	libSDL_image-devel
 BuildRequires:	libmesaglu-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libxml2-devel
+BuildRequires:	python
 BuildRequires:	tcl-devel libjack-devel glew-devel libSDL_ttf-devel
 
 %description
