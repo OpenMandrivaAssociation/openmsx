@@ -1,7 +1,7 @@
 Summary:	Open source MSX emulator
 Name:		openmsx
 Version:	0.7.2
-Release:	%{mkrel 6}
+Release:	%mkrel 7
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		openmsx-fix-config.patch
 License:	GPL+
@@ -21,7 +21,7 @@ near-perfect emulation by using a novel emulation model.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1 -b .fix-config
 
 %build
 %configure2_5x
@@ -30,17 +30,7 @@ near-perfect emulation by using a novel emulation model.
 
 %install
 rm -rf %{buildroot}
-
-# install bin files
-install -d %{buildroot}%{_bindir}
-   cp derived/*/bin/openmsx %{buildroot}%{_bindir}/openmsx
-
-# install c-bios
-install -d %{buildroot}%{_datadir}/openMSX/share/machines
-   cp -r share/ %{buildroot}%{_datadir}/openMSX/
-   cp -r Contrib/cbios/C-BIOS_MSX1/ %{buildroot}%{_datadir}/openMSX/share/machines/
-   cp -r Contrib/cbios/C-BIOS_MSX2/ %{buildroot}%{_datadir}/openMSX/share/machines/
-   cp -r Contrib/cbios/C-BIOS_MSX2+/ %{buildroot}%{_datadir}/openMSX/share/machines/
+%makeinstall_std
 
 # menu
 mkdir -p %{buildroot}%{_datadir}/applications/
@@ -57,9 +47,6 @@ EOF
 %if %mdkversion < 200900
 %post
 %update_menus
-%endif
-
-%if %mdkversion < 200900
 %postun
 %clean_menus
 %endif
@@ -70,7 +57,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README doc/*
+%doc %_datadir/doc/%name/
+%doc README
 %{_bindir}/openmsx
-%{_datadir}/openMSX/share/*
+%{_datadir}/%name
 %{_datadir}/applications/mandriva-%{name}.desktop
