@@ -1,0 +1,25 @@
+diff -p -up openmsx-0.7.2/build/custom.mk.fix-config openmsx-0.7.2/build/custom.mk
+--- openmsx-0.7.2/build/custom.mk.fix-config	2009-06-29 23:38:05.000000000 +0200
++++ openmsx-0.7.2/build/custom.mk	2009-08-07 10:21:32.000000000 +0200
+@@ -6,7 +6,11 @@
+ # openMSX is always installed into a single self-contained directory.
+ # But you can change that directory to for example /usr/local/openMSX
+ # or /usr/games/openMSX if you like.
+-INSTALL_BASE:=/opt/openMSX
++INSTALL_BASE:=/usr/
++INSTALL_SHARE_DIR:=/usr/share/openmsx
++INSTALL_BINARY_DIR:=/usr/bin
++INSTALL_DOC_DIR:=/usr/share/doc/openmsx
++OPENMSX_INSTALL:=/usr
+ 
+ # Add ChangeLog version number to executable file name? This applies only to
+ # development versions, not to release versions (see version.py).
+@@ -16,7 +20,7 @@ VERSION_EXEC:=false
+ # This link is placed in a location that is typically in a user's path:
+ # /usr/local/bin for system-wide installs and ~/bin for personal installs.
+ # This setting is only relevant on systems that support symbolic links.
+-SYMLINK_FOR_BINARY:=true
++SYMLINK_FOR_BINARY:=false
+ 
+ # Install content of Contrib/ directory?
+ # Currently this contains a version of C-BIOS.
