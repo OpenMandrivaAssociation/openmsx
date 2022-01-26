@@ -1,60 +1,44 @@
 Summary:	Open source MSX emulator
 Name:		openmsx
-Version:	0.9.1
-Release:	%mkrel 1
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		openmsx-fix-config.patch
+Version:	17.0
+Release:	1
+Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_17_0/%{name}-%{version}.tar.gz
 License:	GPL+
 Group:		Emulators
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-URL:		http://openmsx.sourceforge.net/
-BuildRequires:	libSDL-devel
-BuildRequires:	libSDL_image-devel
-BuildRequires:	libmesaglu-devel
-BuildRequires:	libpng-devel
-BuildRequires:	libxml2-devel
+URL:		https://openmsx.org/
+
 BuildRequires:	python
-BuildRequires:	tcl-devel libjack-devel glew-devel libSDL_ttf-devel
+BuildRequires:  pkgconfig(SDL2)
+BuildRequires:	pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:	pkgconfig(glew)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(tcl)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(theora)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 The open source MSX emulator that tries to achieve
 near-perfect emulation by using a novel emulation model.
+Comes with the open-source C-BIOS ROM image. ROMs from real machines can be downloaded at the MSX Archive:
+
+http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
 
 %prep
 %setup -q
-%patch0 -p1 -b .fix-config
 
 %build
-%configure2_5x
+%configure
 
-%make
+%make_build
 
 %install
-rm -rf %{buildroot}
-%makeinstall_std
-
-# menu
-mkdir -p %{buildroot}%{_datadir}/applications/
-cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
-[Desktop Entry]
-Type=Application
-Exec=%{_bindir}/openmsx
-Icon=emulators_section
-Name=Openmsx
-Comment=%{summary}
-Categories=Emulator;
-EOF
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%postun
-%clean_menus
-%endif
-
-%clean
-rm -rf %{buildroot}
-
+%make_install
 
 %files
 %defattr(-,root,root)
@@ -62,4 +46,3 @@ rm -rf %{buildroot}
 
 %{_bindir}/openmsx
 %{_datadir}/%{name}
-%{_datadir}/applications/mandriva-%{name}.desktop
