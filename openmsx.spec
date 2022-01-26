@@ -8,7 +8,7 @@ Group:		Emulators
 URL:		https://openmsx.org/
 
 BuildRequires:	python
-BuildRequires:  pkgconfig(SDL2)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:	pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(alsa)
