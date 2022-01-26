@@ -1,3 +1,5 @@
+%define _empty_manifest_terminate_build 0
+
 Summary:	Open source MSX emulator
 Name:		openmsx
 Version:	17.0
