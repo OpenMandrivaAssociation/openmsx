@@ -42,7 +42,7 @@ http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
 
 %files
 %defattr(-,root,root)
-%doc %{_docdir}/%{name}/
+#doc %{_docdir}/%{name}/
 
-%{_bindir}/openmsx
-%{_datadir}/%{name}
+#{_bindir}/openmsx
+#{_datadir}/%{name}
