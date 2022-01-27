@@ -15,6 +15,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:	pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:	pkgconfig(glew)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -45,7 +46,6 @@ http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
 
 %files
 %defattr(-,root,root)
-#doc %{_docdir}/%{name}/
-
-#{_bindir}/openmsx
-#{_datadir}/%{name}
+%doc %{_docdir}/%{name}/
+%{_bindir}/openmsx
+%{_datadir}/%{name}
