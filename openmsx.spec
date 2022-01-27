@@ -5,6 +5,7 @@ Name:		openmsx
 Version:	17.0
 Release:	1
 Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_17_0/%{name}-%{version}.tar.gz
+Patch0:   openmsx-fix-config.patch
 License:	GPL+
 Group:		Emulators
 URL:		https://openmsx.org/
@@ -32,7 +33,7 @@ Comes with the open-source C-BIOS ROM image. ROMs from real machines can be down
 http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
