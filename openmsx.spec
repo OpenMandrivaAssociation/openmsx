@@ -12,7 +12,7 @@ License:	GPL+
 Group:		Emulators
 URL:		https://openmsx.org/
 
-BuildRequires:	python
+BuildRequires: python
 BuildRequires: pkgconfig(sdl2)
 BuildRequires: pkgconfig(SDL2_image)
 BuildRequires: pkgconfig(SDL2_ttf)
@@ -29,6 +29,7 @@ BuildRequires: pkgconfig(freetype2)
 BuildRequires: pkgconfig(theora)
 BuildRequires: pkgconfig(ogg)
 BuildRequires: pkgconfig(vorbis)
+BuildRequires:	glibc-static-devel
 
 # GUI Catapult
 BuildRequires:	pkgconfig(libxml-2.0)
