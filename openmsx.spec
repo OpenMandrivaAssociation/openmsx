@@ -19,11 +19,11 @@ BuildRequires: pkgconfig(SDL2_ttf)
 BuildRequires: pkgconfig(alsa)
 BuildRequires: pkgconfig(dri)
 BuildRequires: pkgconfig(gl)
-BuildRequires:	pkgconfig(glew)
+BuildRequires: pkgconfig(glew)
 BuildRequires: pkgconfig(glut)
-BuildRequires:	pkgconfig(libpng)
-BuildRequires:	pkgconfig(libxml-2.0)
-BuildRequires:	pkgconfig(tcl)
+BuildRequires: pkgconfig(libpng)
+BuildRequires: pkgconfig(libxml-2.0)
+BuildRequires: pkgconfig(tcl)
 BuildRequires: pkgconfig(jack)
 BuildRequires: pkgconfig(freetype2)
 BuildRequires: pkgconfig(theora)
@@ -158,6 +158,6 @@ desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications \
 %license doc/GPL.txt
 %{_bindir}/%{name}-catapult
 %{_datadir}/%{name}-catapult
-%{_datadir}/appdata/%{name}.appdata.xml
+#{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
