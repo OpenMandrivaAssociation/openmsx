@@ -7,28 +7,28 @@ Version:	18.0
 Release:	1
 Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-%{version}.tar.gz
-Patch0:   openmsx-fix-config.patch
+Patch0:  openmsx-fix-config.patch
 License:	GPL+
 Group:		Emulators
 URL:		https://openmsx.org/
 
 BuildRequires:	python
-BuildRequires:  pkgconfig(sdl2)
-BuildRequires:	pkgconfig(SDL2_image)
-BuildRequires:  pkgconfig(SDL2_ttf)
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(dri)
-BuildRequires:  pkgconfig(gl)
+BuildRequires: pkgconfig(sdl2)
+BuildRequires: pkgconfig(SDL2_image)
+BuildRequires: pkgconfig(SDL2_ttf)
+BuildRequires: pkgconfig(alsa)
+BuildRequires: pkgconfig(dri)
+BuildRequires: pkgconfig(gl)
 BuildRequires:	pkgconfig(glew)
-BuildRequires:  pkgconfig(glut)
+BuildRequires: pkgconfig(glut)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(tcl)
-BuildRequires:  pkgconfig(jack)
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(theora)
-BuildRequires:  pkgconfig(ogg)
-BuildRequires:  pkgconfig(vorbis)
+BuildRequires: pkgconfig(jack)
+BuildRequires: pkgconfig(freetype2)
+BuildRequires: pkgconfig(theora)
+BuildRequires: pkgconfig(ogg)
+BuildRequires: pkgconfig(vorbis)
 
 # GUI Catapult
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -41,6 +41,17 @@ near-perfect emulation by using a novel emulation model.
 Comes with the open-source C-BIOS ROM image. ROMs from real machines can be downloaded at the MSX Archive:
 
 http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
+
+%package        catapult
+Summary:        Graphical front-end for openMSX
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+ 
+%description    catapult
+openMSX Catapult is a graphical user interface for openMSX.
+Although the program should be self explanatory, we included a set of HTML
+manuals, that tell how to use Catapult with openMSX. To understand what all
+options mean and to get a better feeling of what openMSX is, we also recommend
+to read the documentation of openMSX.
 
 %prep
 %setup -q -a1
@@ -141,3 +152,12 @@ desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications \
 %doc %{_docdir}/%{name}/
 %{_bindir}/openmsx
 %{_datadir}/%{name}
+
+%files catapult
+%doc %{_docdir}/%{name}-catapult
+%license doc/GPL.txt
+%{_bindir}/%{name}-catapult
+%{_datadir}/%{name}-catapult
+%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
