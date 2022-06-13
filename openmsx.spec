@@ -126,9 +126,6 @@ mv $RPM_BUILD_ROOT%{_datadir}/%{name}/settings.xml \
 ln -s --target-directory=$RPM_BUILD_ROOT%{_datadir}/%{name} \
    ../../../etc/openmsx/settings.xml
  
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
-install -pm 0644 OPENMSX.1 $RPM_BUILD_ROOT%{_mandir}/man1/openmsx.1
- 
 # Install icon set and desktop file
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/{16x16,32x32,48x48,64x64,128x128}/apps
 for i in 16 32 48 64 128; do
