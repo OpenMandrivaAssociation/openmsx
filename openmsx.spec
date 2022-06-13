@@ -48,6 +48,8 @@ http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
 
 
 %build
+export CC=gcc
+export CXX=g++
 # Make the custom flavour module, so we can use RPM OPT FLAGS here
 cat > build/flavour-rpm.mk << EOF
 # Opt flags.
