@@ -106,7 +106,38 @@ Keywords=emulator;msx;openmsx;
 EOF
 
 %install
-%make_install
+%make_install OPENMSX_FLAVOUR=rpm V=1
+pushd %{name}-catapult-%{version}
+  %make_install CATAPULT_FLAVOUR=rpm V=1
+popd
+ 
+rm $RPM_BUILD_ROOT%{_docdir}/%{name}/GPL.txt
+rm $RPM_BUILD_ROOT%{_docdir}/%{name}-catapult/GPL.txt
+ 
+# Move some things around
+mv $RPM_BUILD_ROOT%{_bindir}/catapult $RPM_BUILD_ROOT%{_bindir}/%{name}-catapult
+ 
+mv $RPM_BUILD_ROOT%{_datadir}/%{name}/machines/*.txt \
+   $RPM_BUILD_ROOT%{_docdir}/%{name}
+ 
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+mv $RPM_BUILD_ROOT%{_datadir}/%{name}/settings.xml \
+   $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+ln -s --target-directory=$RPM_BUILD_ROOT%{_datadir}/%{name} \
+   ../../../etc/openmsx/settings.xml
+ 
+mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
+install -pm 0644 OPENMSX.1 $RPM_BUILD_ROOT%{_mandir}/man1/openmsx.1
+ 
+# Install icon set and desktop file
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/{16x16,32x32,48x48,64x64,128x128}/apps
+for i in 16 32 48 64 128; do
+install -pm 0644 share/icons/openMSX-logo-"$i".png \
+    $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/"$i"x"$i"/apps/%{name}.png
+done
+ 
+desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications \
+                     %{name}.desktop
 
 %files
 %defattr(-,root,root)
