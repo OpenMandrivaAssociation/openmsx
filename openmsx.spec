@@ -150,6 +150,7 @@ desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications \
 %files
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}/
+%{_sysconfdir}/%{name}/settings.xml
 %{_bindir}/openmsx
 %{_datadir}/%{name}
 
