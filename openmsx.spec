@@ -6,7 +6,7 @@ Name:		openmsx
 Version:	19.1
 Release:	1
 Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/%{name}-%{version}.tar.gz
-Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-%{version}.tar.gz
+Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-19.0.tar.gz
 Patch0:  openmsx-fix-config.patch
 License:	GPL+
 Group:		Emulators
@@ -73,7 +73,7 @@ OPENMSX_STRIP:=false
 CATAPULT_STRIP:=false
 EOF
  
-cp build/flavour-rpm.mk %{name}-catapult-%{version}/build
+cp build/flavour-rpm.mk %{name}-catapult-19.0/build
  
 cat > build/custom.mk << EOF
 PYTHON:=python3
