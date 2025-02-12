@@ -4,7 +4,7 @@
 Summary:	Open source MSX emulator
 Name:		openmsx
 Version:	19.1
-Release:	1
+Release:	2
 Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-19.0.tar.gz
 Patch0:  openmsx-fix-config.patch
