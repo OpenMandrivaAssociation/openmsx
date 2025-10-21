@@ -3,10 +3,11 @@
 
 Summary:	Open source MSX emulator
 Name:		openmsx
-Version:	19.1
-Release:	3
+Version:	21.0
+Release:	1
 Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/%{name}-%{version}.tar.gz
-Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-19.0.tar.gz
+# Catapult no longer in development, lets drop it
+#Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-19.0.tar.gz
 Patch0:  openmsx-fix-config.patch
 License:	GPL+
 Group:		Emulators
@@ -43,20 +44,19 @@ Comes with the open-source C-BIOS ROM image. ROMs from real machines can be down
 
 http://www.msxarchive.nl/pub/msx/emulator/system_roms/openMSX/
 
-%package        catapult
-Summary:        Graphical front-end for openMSX
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+#package        catapult
+#Summary:        Graphical front-end for openMSX
+#Requires:       %{name}%{?_isa} = %{version}-%{release}
  
-%description    catapult
-openMSX Catapult is a graphical user interface for openMSX.
-Although the program should be self explanatory, we included a set of HTML
-manuals, that tell how to use Catapult with openMSX. To understand what all
-options mean and to get a better feeling of what openMSX is, we also recommend
-to read the documentation of openMSX.
+#description    catapult
+#openMSX Catapult is a graphical user interface for openMSX.
+#Although the program should be self explanatory, we included a set of HTML
+#manuals, that tell how to use Catapult with openMSX. To understand what all
+#options mean and to get a better feeling of what openMSX is, we also recommend
+#to read the documentation of openMSX.
 
 %prep
-%setup -q -a1
-%autopatch -p1
+%autosetup -p1
 
 
 %build
@@ -73,7 +73,7 @@ OPENMSX_STRIP:=false
 CATAPULT_STRIP:=false
 EOF
  
-cp build/flavour-rpm.mk %{name}-catapult-19.0/build
+#cp build/flavour-rpm.mk %{name}-catapult-19.0/build
  
 cat > build/custom.mk << EOF
 PYTHON:=python3
@@ -85,23 +85,20 @@ INSTALL_SHARE_DIR=%{_datadir}/%{name}
 INSTALL_DOC_DIR=%{_docdir}/%{name}
 EOF
  
-cat > %{name}-catapult-%{version}/build/custom.mk << EOF
-PYTHON:=python3
+#cat > %{name}-catapult-%{version}/build/custom.mk << EOF
+#PYTHON:=python3
 # If we set this to %%{_prefix} catapult cannot find its resources
-INSTALL_BASE:=%{_datadir}/%{name}-catapult
-SYMLINK_FOR_BINARY:=false
-INSTALL_BINARY_DIR=%{_bindir}
-INSTALL_SHARE_DIR=%{_datadir}/%{name}-catapult
-INSTALL_DOC_DIR=%{_docdir}/%{name}-catapult
-CATAPULT_OPENMSX_BINARY:=%{_bindir}/%{name}
-CATAPULT_OPENMSX_SHARE:=%{_datadir}/%{name}
-EOF
+#INSTALL_BASE:=%{_datadir}/%{name}-catapult
+#SYMLINK_FOR_BINARY:=false
+#INSTALL_BINARY_DIR=%{_bindir}
+#INSTALL_SHARE_DIR=%{_datadir}/%{name}-catapult
+#INSTALL_DOC_DIR=%{_docdir}/%{name}-catapult
+#CATAPULT_OPENMSX_BINARY:=%{_bindir}/%{name}
+#CATAPULT_OPENMSX_SHARE:=%{_datadir}/%{name}
+#EOF
  
 %configure
 make %{?_smp_mflags} OPENMSX_FLAVOUR=rpm V=1
-pushd %{name}-catapult-%{version}
-  make %{?_smp_mflags} CATAPULT_FLAVOUR=rpm V=1
-popd
  
 # Build desktop icon
 cat >%{name}.desktop <<EOF
@@ -119,16 +116,9 @@ EOF
 
 %install
 %make_install OPENMSX_FLAVOUR=rpm V=1
-pushd %{name}-catapult-%{version}
-  %make_install CATAPULT_FLAVOUR=rpm V=1
-popd
  
 rm $RPM_BUILD_ROOT%{_docdir}/%{name}/GPL.txt
-rm $RPM_BUILD_ROOT%{_docdir}/%{name}-catapult/GPL.txt
- 
-# Move some things around
-mv $RPM_BUILD_ROOT%{_bindir}/catapult $RPM_BUILD_ROOT%{_bindir}/%{name}-catapult
- 
+
 mv $RPM_BUILD_ROOT%{_datadir}/%{name}/machines/*.txt \
    $RPM_BUILD_ROOT%{_docdir}/%{name}
  
@@ -154,12 +144,3 @@ desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications \
 %{_sysconfdir}/%{name}/settings.xml
 %{_bindir}/openmsx
 %{_datadir}/%{name}
-
-%files catapult
-%doc %{_docdir}/%{name}-catapult
-%license doc/GPL.txt
-%{_bindir}/%{name}-catapult
-%{_datadir}/%{name}-catapult
-#{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
