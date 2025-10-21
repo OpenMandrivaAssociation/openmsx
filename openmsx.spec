@@ -144,3 +144,5 @@ desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications \
 %{_sysconfdir}/%{name}/settings.xml
 %{_bindir}/openmsx
 %{_datadir}/%{name}
+%{_datadir}/applications/openmsx.desktop
+%{_iconsdir}/hicolor/*x*/apps/openmsx.png
