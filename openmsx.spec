@@ -13,6 +13,11 @@ License:	GPL+
 Group:		Emulators
 URL:		https://openmsx.org/
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: python
 BuildRequires: pkgconfig(sdl2)
 BuildRequires: pkgconfig(SDL2_image)
