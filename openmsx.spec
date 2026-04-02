@@ -4,7 +4,7 @@
 Summary:	Open source MSX emulator
 Name:		openmsx
 Version:	21.0
-Release:	1
+Release:	2
 Source0:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/%{name}-%{version}.tar.gz
 # Catapult no longer in development, lets drop it
 #Source1:	https://github.com/openMSX/openMSX/releases/download/RELEASE_%{url_ver}/openmsx-catapult-19.0.tar.gz
